@@ -22,17 +22,17 @@ public class User {
     private Integer id;
 
     @NotEmpty(message = "name cannot be empty")
-    @Length(min = 5)
-    @Column(columnDefinition = "varchar(5, 20) not null")
+    @Length(min = 5 , message = "name length must be more than 4")
+    @Column(columnDefinition = "varchar(20) not null")
     private String name;
 
     @NotEmpty(message = "username cannot be empty")
     @Length(min = 5)
-    @Column(columnDefinition = "varchar(5, 20) not null unique")
+    @Column(columnDefinition = "varchar(20) not null unique")
     private String username;
 
     @NotEmpty(message = "password cannot be empty")
-    @Column(columnDefinition = "not null")
+    @Column(columnDefinition = "varchar(10) not null")
     private String password;
 
     @NotEmpty(message = "email cannot be empty")
@@ -41,8 +41,8 @@ public class User {
     private  String email;
 
     @NotEmpty(message = "role cannot be empty")
-    @Pattern(regexp = "\\W*((?i)supervisor|coordinator(?-i))\\W*", message = "role should be admin or user only")
-    @Column(columnDefinition = "varchar(5) not null check(role = 'admin' or role = 'user')")
+    @Pattern(regexp = "\\W*((?i)user|admin(?-i))\\W*", message = "role should be admin or user only")
+    @Column(columnDefinition = "varchar(5) not null")
     private String role;
 
     @NotNull(message = "age cannot be empty")

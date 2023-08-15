@@ -25,9 +25,13 @@ public class UserService {
         User oldUser = userRepository.getById(id);
         if (oldUser == null) return false;
 
-        userRepository.save(user);
+        oldUser.setName(user.getName());
+        oldUser.setAge(user.getAge());
+        userRepository.save(oldUser);
         return true;
+
     }
+
 
     public Boolean deleteUser(Integer id) {
         User oldUser = userRepository.getById(id);
